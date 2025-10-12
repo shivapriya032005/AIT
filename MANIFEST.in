@@ -1,0 +1,13 @@
+include README.md
+include LICENSE
+include requirements.txt
+include oauth_config.py
+include database.py
+
+recursive-include templates *.html
+recursive-include static *.css *.js *.png *.jpg *.ico *.svg
+
+global-exclude __pycache__
+global-exclude *.py[co]
+global-exclude .DS_Store
+global-exclude *.db
