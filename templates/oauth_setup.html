@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OAuth Setup Required - AI Tester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="app-logo-large">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#22d3ee" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h1>OAuth Setup Required</h1>
+        <p>Third-party authentication needs to be configured</p>
+      </div>
+
+      <div class="auth-body">
+        <div class="oauth-setup-content">
+          <div class="setup-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+            </svg>
+          </div>
+
+          <h2>Third-Party Authentication Setup</h2>
+          <p>To use Google and GitHub authentication, you'll need to configure OAuth applications. This enables secure sign-in with your existing accounts.</p>
+
+          <div class="setup-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Google OAuth Setup</h3>
+                <p>Create a Google OAuth application in <a href="https://console.cloud.google.com/" target="_blank" class="external-link">Google Cloud Console</a></p>
+                <ul>
+                  <li>Enable Google+ API</li>
+                  <li>Create OAuth 2.0 credentials</li>
+                  <li>Add redirect URI: <code>http://localhost:5000/auth/google/callback</code></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>GitHub OAuth Setup</h3>
+                <p>Create a GitHub OAuth application in <a href="https://github.com/settings/developers" target="_blank" class="external-link">GitHub Developer Settings</a></p>
+                <ul>
+                  <li>Create a new OAuth App</li>
+                  <li>Set Authorization callback URL: <code>http://localhost:5000/auth/github/callback</code></li>
+                  <li>Copy Client ID and Client Secret</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>Update Configuration</h3>
+                <p>Edit <code>oauth_config.py</code> with your OAuth credentials</p>
+                <div class="code-snippet">
+                  <pre><code># Google OAuth
+GOOGLE_CLIENT_ID = "your-client-id"
+GOOGLE_CLIENT_SECRET = "your-client-secret"
+
+# GitHub OAuth
+GITHUB_CLIENT_ID = "your-client-id"
+GITHUB_CLIENT_SECRET = "your-client-secret"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-actions">
+            <a href="/login" class="btn-secondary">Back to Login</a>
+            <a href="/oauth-setup-guide" class="btn-primary">View Setup Guide</a>
+          </div>
+
+          <div class="alternative-options">
+            <p><strong>Already have an account?</strong></p>
+            <p>You can still use email and password authentication, or continue as a guest user.</p>
+            <a href="/" class="btn-oauth-fallback">Continue as Guest</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .oauth-setup-content {
+      text-align: center;
+    }
+
+    .setup-icon {
+      margin: 24px 0;
+      color: var(--accent-cyan, #22d3ee);
+    }
+
+    .setup-steps {
+      margin: 32px 0;
+      text-align: left;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 20px;
+      background: var(--bg-primary, #151a26);
+      border: 1px solid var(--border-color, #2d3548);
+      border-radius: 8px;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-cyan, #22d3ee);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      color: var(--text-primary, #e2e8f0);
+    }
+
+    .step-content p {
+      margin: 0 0 12px 0;
+      color: var(--text-muted, #94a3b8);
+      font-size: 14px;
+    }
+
+    .step-content ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-secondary, #cbd5e1);
+    }
+
+    .step-content li {
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .external-link {
+      color: var(--accent-cyan, #22d3ee);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .external-link:hover {
+      text-decoration: underline;
+    }
+
+    .code-snippet {
+      background: var(--bg-tertiary, #252b3b);
+      border: 1px solid var(--border-color, #2d3548);
+      border-radius: 6px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+
+    .code-snippet pre {
+      margin: 0;
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 13px;
+      color: var(--text-primary, #e2e8f0);
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .setup-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 32px 0;
+    }
+
+    .btn-secondary {
+      padding: 12px 24px;
+      background: transparent;
+      border: 2px solid var(--border-color, #2d3548);
+      border-radius: 8px;
+      color: var(--text-secondary, #cbd5e1);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-tertiary, #252b3b);
+      border-color: var(--accent-cyan, #22d3ee);
+      color: var(--accent-cyan, #22d3ee);
+    }
+
+    .alternative-options {
+      padding: 24px;
+      background: var(--bg-tertiary, #252b3b);
+      border-radius: 8px;
+      border: 1px solid var(--border-color, #2d3548);
+    }
+
+    .alternative-options p {
+      margin: 0 0 12px 0;
+      color: var(--text-secondary, #cbd5e1);
+      font-size: 14px;
+    }
+
+    .btn-oauth-fallback {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--bg-primary, #151a26);
+      border: 1px solid var(--border-color, #2d3548);
+      border-radius: 6px;
+      color: var(--text-primary, #e2e8f0);
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-oauth-fallback:hover {
+      background: var(--bg-secondary, #1e2433);
+      border-color: var(--accent-cyan, #22d3ee);
+    }
+  </style>
+</body>
+</html>

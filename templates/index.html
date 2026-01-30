@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI Tester - Code Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="app-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#22d3ee" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="app-name">AI Tester</span>
+      </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="/" class="nav-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        <span>Code Editor</span>
+      </a>
+      <a href="/testcases" class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+        </svg>
+        <span>Test Cases</span>
+      </a>
+      <a href="/history" class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>History</span>
+      </a>
+      <a href="/settings" class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+        </svg>
+        <span>Settings</span>
+      </a>
+      <a href="/profile" class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-profile">
+        <div class="user-avatar">G</div>
+        <div class="user-info">
+          <div class="user-name">Guest User</div>
+          <div class="user-email">guest@example.com</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="breadcrumb">
+        <span class="breadcrumb-item">Home</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item active">Code Editor</span>
+      </div>
+      <div class="top-bar-actions">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>Server Connected</span>
+        </div>
+        <button class="icon-btn" title="Download">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </button>
+        <button class="icon-btn" title="Share">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Split Container -->
+    <div class="split-container">
+      <!-- Left Panel - Editor Section -->
+      <div class="editor-container">
+        <div class="editor-toolbar">
+          <select id="langSelect" class="language-select">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+          </select>
+          
+          <input id="filename" type="text" class="filename-input" placeholder="filename.js">
+          
+          <div class="toolbar-spacer"></div>
+          
+          <button id="analyzeBtn" class="toolbar-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M21 21l-4.35-4.35"></path>
+            </svg>
+            Analyze
+          </button>
+          <button id="runBtn" class="toolbar-btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Run Code
+          </button>
+          <button id="clearBtn" class="toolbar-btn icon-only" title="Clear">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="code-editor">
+          <textarea id="code" placeholder="Paste your code here ..." spellcheck="false"></textarea>
+        </div>
+
+        <div class="output-section">
+          <div class="output-header">
+            <div class="output-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+              Output
+            </div>
+            <div class="output-actions">
+              <button class="output-btn" id="copyBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                </svg>
+                Copy
+              </button>
+              <button class="output-btn" id="expandBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <polyline points="9 21 3 21 3 15"></polyline>
+                  <line x1="21" y1="3" x2="14" y2="10"></line>
+                  <line x1="3" y1="21" x2="10" y2="14"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="output-content">
+            <pre id="analysisContent">Press Analyze or Run to start.</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel - Debugger Section -->
+      <div class="debugger-container">
+        <div class="debugger-header">
+          <div class="debugger-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            Debugger
+          </div>
+          <div class="debugger-actions">
+            <button class="debug-btn" id="debugBtn" title="Start Debugging">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Debug
+            </button>
+            <button class="debug-btn" id="stepBtn" title="Step Over" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="13 17 18 12 13 7"></polyline>
+                <polyline points="6 17 11 12 6 7"></polyline>
+              </svg>
+            </button>
+            <button class="debug-btn" id="stopDebugBtn" title="Stop Debugging" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="6" y="6" width="12" height="12"></rect>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Debugger Tabs -->
+        <div class="debugger-tabs">
+          <button class="debug-tab active" data-tab="variables">Variables</button>
+          <button class="debug-tab" data-tab="callstack">Call Stack</button>
+          <button class="debug-tab" data-tab="breakpoints">Breakpoints</button>
+          <button class="debug-tab" data-tab="console">Console</button>
+        </div>
+
+        <!-- Debugger Content -->
+        <div class="debugger-content">
+          <!-- Variables Tab -->
+          <div class="debug-panel active" id="variables-panel">
+            <div class="debug-info">
+              <div class="info-message">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <p>Click "Debug" to start debugging session</p>
+              </div>
+            </div>
+            <div class="variables-list" id="variablesList"></div>
+          </div>
+
+          <!-- Call Stack Tab -->
+          <div class="debug-panel" id="callstack-panel">
+            <div class="debug-info">
+              <div class="info-message">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <p>Call stack will appear during debugging</p>
+              </div>
+            </div>
+            <div class="callstack-list" id="callstackList"></div>
+          </div>
+
+          <!-- Breakpoints Tab -->
+          <div class="debug-panel" id="breakpoints-panel">
+            <div class="breakpoints-controls">
+              <input type="number" id="breakpointLine" placeholder="Line number" min="1">
+              <button id="addBreakpointBtn" class="add-breakpoint-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add Breakpoint
+              </button>
+            </div>
+            <div class="breakpoints-list" id="breakpointsList">
+              <div class="empty-state">No breakpoints set</div>
+            </div>
+          </div>
+
+          <!-- Console Tab -->
+          <div class="debug-panel" id="console-panel">
+            <div class="console-header-actions">
+              <button id="clearConsoleBtn" class="clear-console-btn" title="Clear Console">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+                </svg>
+                Clear
+              </button>
+            </div>
+            <div class="console-output" id="consoleOutput">
+              <div class="console-line console-info">
+                <span class="console-icon">ℹ</span>
+                <span>Debug console ready</span>
+              </div>
+            </div>
+            <div class="console-input-container">
+              <input type="text" id="consoleInput" placeholder="Evaluate expression..." class="console-input">
+              <button id="evalBtn" class="eval-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<script src="{{ url_for('static', filename='user-auth.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

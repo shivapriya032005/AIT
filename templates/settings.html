@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI Tester - Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='settings.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="app-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#22d3ee" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="app-name">AI Tester</span>
+      </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="/" class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        <span>Code Editor</span>
+      </a>
+      <a href="/testcases" class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+        </svg>
+        <span>Test Cases</span>
+      </a>
+      <a href="/history" class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>History</span>
+      </a>
+      <a href="/profile" class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Profile</span>
+      </a>
+      <a href="/settings" class="nav-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+        </svg>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-profile">
+        <div class="user-avatar">G</div>
+        <div class="user-info">
+          <div class="user-name">Guest User</div>
+          <div class="user-email">guest@example.com</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="breadcrumb">
+        <span class="breadcrumb-item">Home</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item active">Settings</span>
+      </div>
+    </header>
+
+    <!-- Settings Container -->
+    <div class="settings-container">
+      <div class="settings-sidebar">
+        <div class="settings-nav">
+          <button class="settings-nav-item active" data-section="editor">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            Editor
+          </button>
+          <button class="settings-nav-item" data-section="appearance">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            Appearance
+          </button>
+          <button class="settings-nav-item" data-section="execution">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Execution
+          </button>
+          <button class="settings-nav-item" data-section="about">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            About
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-content">
+        <!-- Editor Settings -->
+        <div class="settings-section active" id="editor-section">
+          <h2>Editor Settings</h2>
+          
+          <div class="setting-group">
+            <label class="setting-label">Font Size</label>
+            <select id="fontSize" class="setting-select">
+              <option value="12">12px</option>
+              <option value="13">13px</option>
+              <option value="14" selected>14px</option>
+              <option value="15">15px</option>
+              <option value="16">16px</option>
+              <option value="18">18px</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-label">Font Family</label>
+            <select id="fontFamily" class="setting-select">
+              <option value="Fira Code" selected>Fira Code</option>
+              <option value="Consolas">Consolas</option>
+              <option value="Monaco">Monaco</option>
+              <option value="Courier New">Courier New</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-label">Tab Size</label>
+            <select id="tabSize" class="setting-select">
+              <option value="2">2 spaces</option>
+              <option value="4" selected>4 spaces</option>
+              <option value="8">8 spaces</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-toggle">
+              <input type="checkbox" id="autoSave" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Auto-save code</span>
+            </label>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-toggle">
+              <input type="checkbox" id="lineNumbers" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Show line numbers</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Appearance Settings -->
+        <div class="settings-section" id="appearance-section">
+          <h2>Appearance</h2>
+          
+          <div class="setting-group">
+            <label class="setting-label">Theme</label>
+            <div class="theme-options">
+              <div class="theme-card active" data-theme="dark">
+                <div class="theme-preview dark-theme"></div>
+                <span>Dark</span>
+              </div>
+              <div class="theme-card" data-theme="light">
+                <div class="theme-preview light-theme"></div>
+                <span>Light</span>
+              </div>
+              <div class="theme-card" data-theme="auto">
+                <div class="theme-preview auto-theme"></div>
+                <span>Auto</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-label">Accent Color</label>
+            <div class="color-options">
+              <div class="color-option active" data-color="cyan" style="background: #22d3ee;"></div>
+              <div class="color-option" data-color="blue" style="background: #3b82f6;"></div>
+              <div class="color-option" data-color="purple" style="background: #a855f7;"></div>
+              <div class="color-option" data-color="green" style="background: #10b981;"></div>
+              <div class="color-option" data-color="orange" style="background: #f59e0b;"></div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-toggle">
+              <input type="checkbox" id="animations" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Enable animations</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Execution Settings -->
+        <div class="settings-section" id="execution-section">
+          <h2>Execution Settings</h2>
+          
+          <div class="setting-group">
+            <label class="setting-label">Default Language</label>
+            <select id="defaultLang" class="setting-select">
+              <option value="python" selected>Python</option>
+              <option value="javascript">JavaScript</option>
+              <option value="java">Java</option>
+              <option value="cpp">C++</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-label">Execution Timeout (seconds)</label>
+            <select id="timeout" class="setting-select">
+              <option value="5">5 seconds</option>
+              <option value="10" selected>10 seconds</option>
+              <option value="30">30 seconds</option>
+              <option value="60">60 seconds</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-toggle">
+              <input type="checkbox" id="autoRun" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Auto-run after analysis</span>
+            </label>
+          </div>
+
+          <div class="setting-group">
+            <label class="setting-toggle">
+              <input type="checkbox" id="clearOutput" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Clear output before execution</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="settings-section" id="about-section">
+          <h2>About AI Tester</h2>
+          
+          <div class="about-content">
+            <div class="about-logo">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#22d3ee" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            <h3>AI Code Tester & Debugger</h3>
+            <p class="version">Version 1.0.0</p>
+            
+            <div class="about-info">
+              <p>A powerful AI-powered tool for testing, analyzing, and debugging code in multiple programming languages.</p>
+              
+              <div class="feature-list">
+                <div class="feature-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Multi-language support (Python, JavaScript, Java, C++)</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Real-time code analysis and debugging</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Automated test case execution</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Interactive debugging console</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-links">
+              <a href="https://github.com" target="_blank" class="about-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                GitHub Repository
+              </a>
+              <a href="#" class="about-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Documentation
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-actions">
+          <button id="saveSettingsBtn" class="save-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 3 7 8 15 8"></polyline>
+            </svg>
+            Save Settings
+          </button>
+          <button id="resetSettingsBtn" class="reset-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path>
+            </svg>
+            Reset to Default
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<script src="{{ url_for('static', filename='user-auth.js') }}"></script>
+<script src="{{ url_for('static', filename='settings.js') }}"></script>
+</body>
+</html>

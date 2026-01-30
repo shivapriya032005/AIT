@@ -1,0 +1,257 @@
+/* History Page Styles */
+
+.history-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.history-filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.filter-select {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-select:hover {
+  border-color: var(--text-muted);
+}
+
+.filter-select:focus {
+  border-color: var(--accent-cyan);
+}
+
+.search-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  min-width: 250px;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--accent-cyan);
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.history-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background: var(--bg-tertiary);
+  border-left-color: var(--accent-hover);
+}
+
+.history-item.code {
+  border-left-color: #3b82f6;
+}
+
+.history-item.analyze {
+  border-left-color: #f59e0b;
+}
+
+.history-item.debug {
+  border-left-color: #ef4444;
+}
+
+.history-item.test {
+  border-left-color: #10b981;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.history-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  color: var(--accent-cyan);
+}
+
+.history-info h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.history-info p {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.history-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.history-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.history-badge.python {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.history-badge.javascript {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+.history-badge.java {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.history-badge.cpp {
+  background: rgba(168, 85, 247, 0.2);
+  color: #a855f7;
+}
+
+.history-content {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.history-code {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 12px;
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  color: var(--text-secondary);
+  max-height: 150px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.history-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.history-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.history-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.history-btn.delete {
+  color: var(--danger);
+}
+
+.history-btn.delete:hover {
+  border-color: var(--danger);
+}
+
+.empty-history {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.empty-history svg {
+  opacity: 0.3;
+  margin-bottom: 16px;
+}
+
+.empty-history h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.empty-history p {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+}
