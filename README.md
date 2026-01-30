@@ -23,7 +23,7 @@ pip install ai-tester-1.0.0-py3-none-any.whl
 ### From Source
 
 ```bash
-git clone https://github.com/yourusername/ai-tester.git
+git clone https://github.com/shivapriya032005/AIT.git
 cd ai-tester
 pip install -r requirements.txt
 ```
